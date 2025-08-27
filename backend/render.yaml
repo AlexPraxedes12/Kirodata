@@ -1,0 +1,11 @@
+
+services:
+  - type: web
+    name: musenotes-backend
+    env: docker
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: DEMO_MODE
+        value: "true"

@@ -1,0 +1,19 @@
+
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: musenotes-backend
+spec:
+  template:
+    spec:
+      containers:
+        - image: gcr.io/PROJECT_ID/musenotes-backend:latest
+          env:
+            - name: DEMO_MODE
+              value: "true"
+          ports:
+            - containerPort: 8080
+      containerConcurrency: 80
+  traffic:
+    - percent: 100
+      latestRevision: true
